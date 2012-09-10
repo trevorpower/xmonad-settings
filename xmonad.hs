@@ -3,6 +3,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Layout.NoBorders
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.Gaps
+import XMonad.Util.EZConfig
 
 main = do
   xmonad $ defaultConfig
@@ -13,7 +14,10 @@ main = do
       focusedBorderColor = "#de935f",
       layoutHook = onWorkspace "9" screencast $
                    layout
-    }
+    } `additionalKeysP`
+    [
+      ("M-S-p", spawn "dwb")
+    ]
 
 -- for screen casts, to get native 16:9 aspect ratio
 -- the following gives me 1600 X 900 on my current desktop
